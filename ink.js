@@ -1,6 +1,11 @@
 function Ink() {
 
-  Phaser.Sprite.call(this, game, player.x, player.y - game.groups.worldObjects.y, 'ink');
+  var offset = 35;
+  var playerCoords = player.y - game.groups.worldObjects.y;
+  var offsetX = Math.cos(player.rotation + Phaser.Math.degToRad(90)) * offset;
+  var offsetY = Math.sin(player.rotation + Phaser.Math.degToRad(90)) * offset;
+
+  Phaser.Sprite.call(this, game, player.x + offsetX, playerCoords + offsetY, 'ink');
   this.anchor.setTo(0.5, 0.5);
 
   game.physics.enable(this, Phaser.Physics.ARCADE);
