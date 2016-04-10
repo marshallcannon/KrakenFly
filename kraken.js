@@ -1,6 +1,6 @@
 function Kraken() {
 
-  Phaser.Sprite.call(this, game, 200, 600, 'kraken');
+  Phaser.Sprite.call(this, game, 200, 500, 'kraken');
   game.groups.player.add(this);
   this.anchor.setTo(0.5, 0.5);
 
@@ -36,8 +36,11 @@ Kraken.prototype.update = function() {
   }
   else if(this.y > 600)
   {
-    game.groups.worldObjects.y += 600-this.y;
-    this.y = 600;
+    if(game.groups.worldObjects.y > -300)
+    {
+      game.groups.worldObjects.y += 600-this.y;
+      this.y = 600;
+    }
   }
 
 
